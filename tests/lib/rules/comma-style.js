@@ -47,36 +47,36 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         {code: "function foo(){var a=[1\n, 2]}", args: ["2", "first"]},
         {
             code: "var a = 'a',\no = 'o';",
-            args: [2, "first", {VariableDeclaration: true}]
+            args: [2, "first", {exceptions: {VariableDeclaration: true}}]
         },
         {
             code: "var arr = ['a',\n'o'];",
-            args: [2, "first", {ArrayExpression: true}]
+            args: [2, "first", {exceptions: {ArrayExpression: true}}]
         },
         {
             code: "var obj = {a: 'a',\nb: 'b'};",
-            args: [2, "first", {ObjectExpression: true}]
+            args: [2, "first", {exceptions: {ObjectExpression: true}}]
         },
         {
             code: "var a = 'a',\no = 'o',\narr = [1,\n2];",
-            args: [2, "first", {VariableDeclaration: true, ArrayExpression: true}]
+            args: [2, "first", {exceptions: {VariableDeclaration: true, ArrayExpression: true}}]
         },
         {
             code: "var ar ={fst:1,\nsnd: [1,\n2]};",
-            args: [2, "first", {ArrayExpression: true, ObjectExpression: true}]
+            args: [2, "first", {exceptions: {ArrayExpression: true, ObjectExpression: true}}]
         },
         {
             code: "var ar ={fst:1,\nsnd: [1,\n2]};",
-            args: [2, "first", {ArrayExpression: true, ObjectExpression: true}]
+            args: [2, "first", {exceptions: {ArrayExpression: true, ObjectExpression: true}}]
         },
         {
             code: "var a = 'a',\nar ={fst:1,\nsnd: [1,\n2]};",
             args: [2, "first",
-                {
+              {exceptions: {
                     ArrayExpression: true,
                     ObjectExpression: true,
                     VariableDeclaration: true
-                }]
+              }}]
         }
     ],
 
@@ -165,7 +165,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var a = 'a',\no = 'o',\narr = [1,\n2];",
-            args: [2, "first", {VariableDeclaration: true}],
+            args: [2, "first", {exceptions: {VariableDeclaration: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "Literal"
@@ -173,7 +173,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var a = 'a',\nobj = {a: 'a',\nb: 'b'};",
-            args: [2, "first", {VariableDeclaration: true}],
+            args: [2, "first", {exceptions: {VariableDeclaration: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "Property"
@@ -181,7 +181,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var a = 'a',\nobj = {a: 'a',\nb: 'b'};",
-            args: [2, "first", {ObjectExpression: true}],
+            args: [2, "first", {exceptions: {ObjectExpression: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "VariableDeclarator"
@@ -189,7 +189,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var a = 'a',\narr = [1,\n2];",
-            args: [2, "first", {ArrayExpression: true}],
+            args: [2, "first", {exceptions: {ArrayExpression: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "VariableDeclarator"
@@ -197,7 +197,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var ar =[1,\n{a: 'a',\nb: 'b'}];",
-            args: [2, "first", {ArrayExpression: true}],
+            args: [2, "first", {exceptions: {ArrayExpression: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "Property"
@@ -205,7 +205,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var ar =[1,\n{a: 'a',\nb: 'b'}];",
-            args: [2, "first", {ObjectExpression: true}],
+            args: [2, "first", {exceptions: {ObjectExpression: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "ObjectExpression"
@@ -213,7 +213,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var ar ={fst:1,\nsnd: [1,\n2]};",
-            args: [2, "first", {ObjectExpression: true}],
+            args: [2, "first", {exceptions: {ObjectExpression: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "Literal"
@@ -221,7 +221,7 @@ eslintTester.addRuleTest("lib/rules/comma-style", {
         },
         {
             code: "var ar ={fst:1,\nsnd: [1,\n2]};",
-            args: [2, "first", {ArrayExpression: true}],
+            args: [2, "first", {exceptions: {ArrayExpression: true}}],
             errors: [{
                 message: FIRST_MSG,
                 type: "Property"
